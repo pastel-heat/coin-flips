@@ -5,12 +5,12 @@ def repeat_experiment():
     successes = 0 # success counter - will increase if any given experiment contains a streak of 6 consecutive flips
 
     # run experiment 10k times, if flip coins returns true, add 1 to success counter
-    for n in range(10000):
+    for n in range(100000):
         if flip_coins():
             successes += 1
     
     # print final calculation on what percentage of experiments contained a streak of 6
-    print(f"A streak of 6 or more appeared in {successes/10000*100:.2f}% of 10,000 experiments")
+    print(f"A streak of 6 or more appeared in {successes/100000*100:.2f}% of 100,000 experiments")
 
 # function for doing the experiment itself
 def flip_coins():
@@ -30,17 +30,16 @@ def streak_checker(coin_flips):
     streak = 1
 
     # start iteration on index 1 of list, since starting on index 0 will cause a crash as program compares index 0 with index -1
-    for flip in coin_flips[1:]:
+    for flip in range(len(coin_flips) - 2):
 
-        # compare most recent flip with previous flip, if they are the same, increase streak counter by 1
-        if coin_flips[flip] == coin_flips[flip - 1]:
+        # compare current flip with next flip, if they are the same, increase streak counter by 1
+        if coin_flips[flip] == coin_flips[flip + 1]:
             streak += 1
 
         # if not the same, reset streak counter back to 1
         else:
             streak = 1
         
-
         # if streak reaches 6, return True back to flip coins function, which then passes up to repeat_experiment
         if streak == 6:
             return True
@@ -52,3 +51,4 @@ def streak_checker(coin_flips):
 # this, so please let me know if this looks implimented correctly to you!
 if __name__ == '__main__':
     repeat_experiment()
+
