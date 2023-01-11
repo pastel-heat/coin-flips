@@ -1,6 +1,8 @@
 import random
 
-# function for repeating experiment 10k times
+# this program calculates the probability of having at least 1 streak of 6 consecutive identical results if you flip a coin 100 times
+
+# function for repeating experiment 100k times
 def repeat_experiment():
     successes = 0 # success counter - will increase if any given experiment contains a streak of 6 consecutive flips
 
