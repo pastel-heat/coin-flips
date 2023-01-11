@@ -4,7 +4,7 @@ import random
 def repeat_experiment():
     successes = 0 # success counter - will increase if any given experiment contains a streak of 6 consecutive flips
 
-    # run experiment 10k times, if flip coins returns true, add 1 to success counter
+    # run experiment 100k times, if flip coins returns true, add 1 to success counter
     for n in range(100000):
         if flip_coins():
             successes += 1
@@ -23,13 +23,12 @@ def flip_coins():
     # runs streak checker function, and returns true or false to repeat_experiment, depending on result of streak checker
     return streak_checker(coin_flips)
 
-# streak checker function. this is where I think my issue might be, but I'm not 100% certain
 # checks for a streak of 6 in the list of 100 flips, and returns True if it finds one.
 def streak_checker(coin_flips):
     # initialize streak at 1 - since if you flip a coin, no matter the result, you have a streak of 1.
     streak = 1
 
-    # start iteration on index 1 of list, since starting on index 0 will cause a crash as program compares index 0 with index -1
+    # stop iteration on index 98 of list to avoid error of overstepping list bounds
     for flip in range(len(coin_flips) - 2):
 
         # compare current flip with next flip, if they are the same, increase streak counter by 1
